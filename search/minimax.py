@@ -4,7 +4,7 @@ from eval.material import evaluate_material
 ## Functions define the desision tree of the AI-Chess-Bot
 
 # The bot is using a 2-ply search to start,
-# and chooses the move that gives the most points to WHITE
+# and chooses the move that gives the best score
 
 # This function is the desision tree and returns the move with the best score
 def minimax(board, depth):
