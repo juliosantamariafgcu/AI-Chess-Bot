@@ -1,0 +1,52 @@
+import chess
+from eval.material import evaluate_material
+
+## Functions define the desision tree of the AI-Chess-Bot
+
+# The bot is using a 2-ply search to start,
+# and chooses the move that gives the most points to WHITE
+
+# This function is the desision tree and returns the move with the best score
+def minimax(board, depth):
+    if board.is_checkmate():
+        return -100000 if board.turn == chess.WHITE else 100000
+
+    if board.is_game_over(claim_draw=True):
+        return 0
+
+    if depth == 0:
+        return evaluate_material(board)
+
+    if board.turn == chess.WHITE:
+        best = float("-inf")
+        for move in board.legal_moves:
+            board.push(move)
+            best = max(best, minimax(board, depth - 1))
+            board.pop()
+        return best
+
+    best = float("inf")
+    for move in board.legal_moves:
+        board.push(move)
+        best = min(best, minimax(board, depth - 1))
+        board.pop()
+    return best
+
+# This function selects the best possible move for WHITE and returns that move
+def select_best_move(board, depth=2):
+    best_move = None
+    maximizing = board.turn == chess.WHITE
+    best_score = float("-inf") if maximizing else float("inf")
+
+    for move in board.legal_moves:
+        board.push(move)
+        score = minimax(board, depth - 1)
+        board.pop()
+
+        if (maximizing and score > best_score) or (
+            not maximizing and score < best_score
+        ):
+            best_score = score
+            best_move = move
+
+    return best_move

@@ -9,6 +9,8 @@ PIECE_VALUES = {
 }
 
 ## Simplest Evaluation of "Score" (Tells who is in the lead and current scores)
+## Function Evaluates the score from the WHITE perspective, with a positive score meaning
+# an advantage for WHITE and a negative score meaning an advantage for BLACK.
 
 def evaluate_material(board: chess.Board) -> int:
     score = 0
