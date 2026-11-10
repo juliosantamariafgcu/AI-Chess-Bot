@@ -1,0 +1,6 @@
+python-chess
+torch
+numpy
+pandas
+matplotlib
+pytest
