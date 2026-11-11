@@ -1,4 +1,5 @@
 import chess
+import random
 from eval.material import evaluate_material
 
 ## Functions define the desision tree of the AI-Chess-Bot
@@ -32,9 +33,9 @@ def minimax(board, depth):
         board.pop()
     return best
 
-# This function selects the best possible move for WHITE and returns that move
+# This function selects the best possible move for the current player and returns that move
 def select_best_move(board, depth=2):
-    best_move = None
+    best_moves = []
     maximizing = board.turn == chess.WHITE
     best_score = float("-inf") if maximizing else float("inf")
 
@@ -47,6 +48,9 @@ def select_best_move(board, depth=2):
             not maximizing and score < best_score
         ):
             best_score = score
-            best_move = move
+            best_moves = [move]
 
-    return best_move
+        elif score == best_score:
+            best_moves.append(move)
+
+    return random.choice(best_moves) if best_moves else None
