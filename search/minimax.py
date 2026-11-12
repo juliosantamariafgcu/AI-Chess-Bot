@@ -2,7 +2,7 @@ import chess
 import random
 from eval.material import evaluate_material
 
-## Functions define the desision tree of the AI-Chess-Bot
+## Functions define the decision tree of the AI-Chess-Bot
 
 # The bot is using a 2-ply search to start,
 # and chooses the move that gives the best score

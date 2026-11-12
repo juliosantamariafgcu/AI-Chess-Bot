@@ -1,3 +1,7 @@
+## This file tests and gives a baseline for a bot using the minimax method
+# against a bot using the random method to chose a move.
+
+
 from collections import Counter
 from pathlib import Path
 import csv

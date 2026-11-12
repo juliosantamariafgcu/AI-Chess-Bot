@@ -1,0 +1,45 @@
+
+# Python virtual environments
+venv/
+.venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# IDE settings
+.vscode/
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Large training datasets
+data/*.parquet
+data/*.pgn
+data/*.zst
+data/*.npy
+data/*.npz
+
+# Trained neural network models
+*.pt
+*.pth
+*.ckpt
+
+# Downloaded Stockfish binaries
+engines/*.exe
+
+# Temporary files
+*.log
+*.tmp
