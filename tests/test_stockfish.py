@@ -3,17 +3,22 @@ import chess.engine
 
 STOCKFISH_PATH = "engines/stockfish/stockfish.exe"
 
-engine = chess.engine.SimpleEngine.popen_uci(
-    STOCKFISH_PATH
-)
 
-board = chess.Board()
+def test_stockfish():
+    engine = chess.engine.SimpleEngine.popen_uci(STOCKFISH_PATH)
 
-result = engine.analyse(
-    board,
-    chess.engine.Limit(depth=10)
-)
+    try:
+        board = chess.Board()
 
-print("Stockfish Evaluation:", result["score"])
+        result = engine.analyse(
+            board,
+            chess.engine.Limit(depth=10)
+        )
 
-engine.quit()
+        print("Stockfish Evaluation:", result["score"])
+
+        assert "score" in result
+        assert result["score"] is not None
+
+    finally:
+        engine.quit()
